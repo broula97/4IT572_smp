@@ -1,15 +1,16 @@
 - name: Create new EC2 instance
   hosts: localhost
   connection: local
+  gather_facts: False
 
   tasks:
     - name: Launch EC2 Instance
       ec2:
         instance_type: t2.micro
-        image: ami-0f9fc25dd2506cf6d
+        image: ami-0f9fc25dd2506cf6d #nutno zmenit vzdy kdyz se zapne lab
         region: us-east-1
-        key_name: devops
-        vpc_subnet_id: subnet-0f6aa751e970249dc
+        key_name: devops #key-pair pro instanci
+        vpc_subnet_id: subnet-0f6aa751e970249dc #nutno zmenit vzdy kdyz se zapne lab
         assign_public_ip: yes
         wait: yes
         count: 1
