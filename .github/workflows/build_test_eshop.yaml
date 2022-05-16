@@ -58,7 +58,7 @@ jobs:
           npm run build -- --colors
 
       - name: Cache node modules and build folder
-        if: ${{ github.ref =='refs/heads/master' }} # tohle rika, pokud je brench, ve ktere se nachazim master tak to proved a pokud neni tak to preskoc
+        if: ${{ github.ref =='refs/heads/main' }} # tohle rika, pokud je brench, ve ktere se nachazim main tak to proved a pokud neni tak to preskoc
         uses: actions/cache@v3
         with:
           path: |
@@ -100,7 +100,7 @@ jobs:
   Depoly:
     needs: [Build, Test]
     runs-on: ubuntu-latest
-    if: ${{ github.ref =='refs/heads/master' }}
+    if: ${{ github.ref =='refs/heads/main' }}
 
     name: Deploy to EC2 instance
 
