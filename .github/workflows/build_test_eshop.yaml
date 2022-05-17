@@ -101,7 +101,6 @@ jobs:
     needs: [Build, Test]
     runs-on: ubuntu-latest
     if: ${{ github.ref =='refs/heads/main' }}
-
     name: Deploy to EC2 instance
 
     steps:
@@ -117,4 +116,7 @@ jobs:
 
       - name: Setup Ansible
         run: pip3 install ansible boto boto3
+
+      - name: Run Ansible playbook
+        run: ansible-playbook aws/ec2_deploy.yml
   # End of deploy section
